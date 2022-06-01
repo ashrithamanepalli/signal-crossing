@@ -6,7 +6,11 @@ class SignalCrossing {
   }
 
   equals(otherCrossing) {
-    return otherCrossing instanceof SignalCrossing;
+    return otherCrossing instanceof SignalCrossing &&
+      this.signals.equals(otherCrossing.signals) &&
+      this.currentOnSignal === otherCrossing.currentOnSignal &&
+      this.nextSignal === otherCrossing.nextSignal;
   }
 }
+
 exports.SignalCrossing = SignalCrossing;
