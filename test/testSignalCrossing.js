@@ -1,13 +1,5 @@
 const assert = require('assert');
-
-class SignalCrossing {
-  constructor() {
-  }
-
-  equals(otherCrossing) {
-    return otherCrossing instanceof SignalCrossing;
-  }
-}
+const { SignalCrossing } = require('../src/signalCrossing.js');
 
 describe('SignalCrossing', () => {
   it('should equate two instances of class SignalCrossing', () => {
