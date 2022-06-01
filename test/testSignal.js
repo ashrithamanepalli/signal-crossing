@@ -1,13 +1,5 @@
 const assert = require('assert');
-
-class Signal {
-  constructor() {
-  }
-
-  equals(otherSignal) {
-    return otherSignal instanceof Signal;
-  }
-}
+const { Signal } = require('../src/signal.js');
 
 describe('Signal', () => {
   it('should equate two instances of same class', () => {
