@@ -15,7 +15,7 @@ describe('Signal', () => {
 
       const state1 = signal1.getNextState();
 
-      assert.equal(state1, 'green');
+      assert.strictEqual(state1, 'green');
     });
 
   it('should update index and return next state when getNextState is accessed',
@@ -27,7 +27,7 @@ describe('Signal', () => {
       const state2 = signal2.getNextState();
 
       assert.ok(signal1.equals(signal2));
-      assert.equal(state1, state2);
+      assert.strictEqual(state1, state2);
     });
 
   it('should update state with next state when updateSignal is accessed',
