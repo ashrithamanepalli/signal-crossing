@@ -1,18 +1,15 @@
 class Signal {
-  constructor() {
-    this.state = 'red';
-    this.allStates = ['red', 'green'];
-    this.index = 0;
+  constructor(states) {
+    this.states = states;
+    this.state = '';
   }
 
-  getNextState() {
-    this.index++;
-    this.index = this.index >= this.allStates.length ? 0 : this.index;
-    return this.allStates[this.index];
+  start() {
+    this.state = this.states.currentElement();
   }
 
   updateState() {
-    this.state = this.getNextState();
+    this.state = this.states.nextElement();
   }
 
   isInGoState() {
@@ -21,8 +18,7 @@ class Signal {
 
   equals(otherSignal) {
     return otherSignal instanceof Signal &&
-      this.state === otherSignal.state &&
-      this.index === otherSignal.index;
+      this.state === otherSignal.state;
   }
 }
 

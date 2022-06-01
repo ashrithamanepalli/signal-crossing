@@ -1,40 +1,55 @@
 const assert = require('assert');
 const { Signal } = require('../src/signal.js');
+const { Iterator } = require('../src/iterator.js');
 
 describe('Signal', () => {
   it('should equate two instances of same class', () => {
-    const signal1 = new Signal();
-    const signal2 = new Signal();
+    const states1 = new Iterator('red', 'green');
+
+    const signal1 = new Signal(states1);
+    const signal2 = new Signal(states1);
 
     assert.ok(signal1.equals(signal2));
   });
 
-  it('should give the nextState when getNextState is accessed',
+  it('should initialize the state as red when accessed the start method',
     () => {
-      const signal1 = new Signal();
+      const states1 = new Iterator('red', 'green');
+      const states2 = new Iterator('red', 'green');
 
-      const state1 = signal1.getNextState();
+      const signal1 = new Signal(states1);
+      const signal2 = new Signal(states2);
 
-      assert.strictEqual(state1, 'green');
-    });
-
-  it('should update index and return next state when getNextState is accessed',
-    () => {
-      const signal1 = new Signal();
-      const signal2 = new Signal();
-
-      const state1 = signal1.getNextState();
-      const state2 = signal2.getNextState();
+      signal1.start();
+      signal2.start();
 
       assert.ok(signal1.equals(signal2));
-      assert.strictEqual(state1, state2);
     });
 
   it('should update state with next state when updateSignal is accessed',
     () => {
-      const signal1 = new Signal();
-      const signal2 = new Signal();
+      const states1 = new Iterator('red', 'green');
+      const states2 = new Iterator('red', 'green');
 
+      const signal1 = new Signal(states1);
+      const signal2 = new Signal(states2);
+
+      signal1.updateState();
+      signal2.updateState();
+
+      assert.ok(signal1.equals(signal2));
+    });
+
+  it('should cycle and assign state when called updateState multiple times',
+    () => {
+      const states1 = new Iterator('red', 'green');
+      const states2 = new Iterator('red', 'green');
+
+      const signal1 = new Signal(states1);
+      const signal2 = new Signal(states2);
+
+      signal1.updateState();
+      signal1.updateState();
       signal1.updateState();
       signal2.updateState();
 
@@ -50,7 +65,8 @@ describe('Signal', () => {
 
   it('isInGoState should equate when the signal is in stop state',
     () => {
-      const signal1 = new Signal();
+      const states1 = new Iterator('red', 'green');
+      const signal1 = new Signal(states1);
 
       signal1.updateState();
 

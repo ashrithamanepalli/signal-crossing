@@ -1,5 +1,6 @@
 ## TODO :
 
+- [ ] Separate the SignalCrossing to a different file
 - [ ] Create a iterator for maintaining the cycle of array elements
       (states of signal, signals in crossing)
 - [ ] SignalCrossing class to coordinate all the signals
@@ -8,6 +9,7 @@
 
 ## DONE :
 
+- [x] Make the Signal accept a states i.e., an instance of iterator
 - [x] Make a Iterator class
 - [x] Extracted the updateIndex method
 - [x] Had a method updateState method
