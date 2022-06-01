@@ -15,6 +15,10 @@ class Signal {
     this.state = this.getNextState();
   }
 
+  isInGoState() {
+    return this.state === 'green';
+  }
+
   equals(otherSignal) {
     return otherSignal instanceof Signal &&
       this.state === otherSignal.state &&

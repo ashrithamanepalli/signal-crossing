@@ -40,4 +40,20 @@ describe('Signal', () => {
 
       assert.ok(signal1.equals(signal2));
     });
+
+  it('isInGoState should not equate when the signal is in stop state',
+    () => {
+      const signal1 = new Signal();
+
+      assert.ok(!signal1.isInGoState());
+    });
+
+  it('isInGoState should equate when the signal is in stop state',
+    () => {
+      const signal1 = new Signal();
+
+      signal1.updateState();
+
+      assert.ok(signal1.isInGoState());
+    });
 });
