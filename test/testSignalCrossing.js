@@ -13,4 +13,15 @@ describe('SignalCrossing', () => {
     const crossing2 = new SignalCrossing(signals);
     assert.ok(crossing1.equals(crossing2));
   });
+
+  it('should not equate if the Signals are not equal', () => {
+    const signal1 = new Signal('red', 'green');
+    const signal2 = new Signal('red');
+    const signals1 = new Iterator(signal1, signal2);
+    const signals2 = new Iterator(signal1);
+
+    const crossing1 = new SignalCrossing(signals1);
+    const crossing2 = new SignalCrossing(signals2);
+    assert.ok(!crossing1.equals(crossing2));
+  });
 });
