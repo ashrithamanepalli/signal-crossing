@@ -10,6 +10,7 @@ class Signal {
 
   updateState() {
     this.state = this.states.nextElement();
+    this.called = true;
   }
 
   isInGoState() {
